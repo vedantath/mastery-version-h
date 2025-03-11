@@ -14,14 +14,16 @@ You are allowed to utilize the terminal of your choice for these actions, but th
 - Some testcases in the `testcases` folder
 - a reference executable called `ref.out`
 
+
 # What this code does:
 The given code is a baby implementation of memory leak tracking in valgrind. It reads in lines from an input file in the
 format you have previously seen in MM Lab. `a <allocation id> <size>` and `f <allocation id>` to allocate and free
 memory respectively. This parser is known to be correct. In grind.c, parsed lines are processed: allocations are stored 
 in a hash map and frees remove the hash map entry. If a free can not find its alloc id, `GRIND_BAD_FREE` is returned,
 if any other error occurs, `GRIND_FAILURE` is returned. If no errors are encountered, `GRIND_SUCCESS` is returned. Once 
-the trace finishes, the results of the trace are printed as specified by the reference solution. Unfortunately, some
-aspects of `grind.c` may be incorrect. 
+the trace finishes, the results of the trace are printed as specified by the reference solution.
+Note that notifications of unfreed memory are expected in some testcases.
+Unfortunately, some aspects of `grind.c` may be incorrect. 
 
 To run an individual testcase use
 `bin/a.out -t <file>`. Use `ref.out -t <file>` for the reference output.
