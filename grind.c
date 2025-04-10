@@ -40,8 +40,10 @@ grind_state_t grind(struct Parser* parser) {
                     }
                     free_grind_elem(&itr);
                     freed = true;
+                    break;
                 }
                 prev = itr;
+                itr = itr->next;
             }
             if (!freed) {
                 return GRIND_BAD_FREE;
